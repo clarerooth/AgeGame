@@ -1,0 +1,70 @@
+#:kivy 1.0.9
+
+
+<AgeGame>:
+    orientation: 'vertical'
+    Label:
+        id: q1
+        font_size: 70
+        text: app.q1t
+    FloatInput:
+        id: t1
+        font_size: 70
+        size_hint_x:.1
+        multiline: False
+        on_text_validate:
+            app.printHello(t1.text)
+    Label:
+        id: q2
+        font_size: 70
+        text: app.q2t
+    FloatInput:
+        id: t2
+        font_size: 70
+        size_hint_x:.1
+        multiline: False
+        on_text_validate:
+            app.printHello(t2.text)
+    Label:
+        id: q3
+        font_size: 70
+        text: app.q3t
+    FloatInput:
+        id: t3
+        font_size: 70
+        multiline: False
+        on_text_validate:
+            app.printHello(t3.text)
+    Label:
+        font_size: 70
+        text: app.q4t
+    FloatInput:
+        id: t4
+        font_size: 70
+        multiline: False
+        on_text_validate:
+            app.printHello(t4.text)
+    Label:
+        font_size: 70
+        text: app.q5t
+    FloatInput:
+        id: t5
+        font_size: 70
+        multiline: False
+        on_text_validate:
+            app.printHello(t5.text)
+    Label:
+        font_size: 70
+        text: app.q6t
+    FloatInput:
+        id: t6
+        font_size: 70
+        multiline: False
+        on_text_validate:
+            app.printHello(t6.text)
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y: None
+        height: 200
+        Label:
+            text: 'output colour:'

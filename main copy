@@ -1,0 +1,71 @@
+from kivy.app import App
+from kivy.uix.button import Button
+from kivy.uix.scatter import Scatter
+from kivy.uix.label import Label
+from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.textinput import TextInput
+from kivy.uix.recycleview import RecycleView
+from kivy.lang import Builder
+import re
+
+Builder.load_string('''
+<AgeGS>:
+#  def on_enter(instance, value):
+#    print('User pressed enter in', instance)
+    viewclass: 'Button'
+    RecycleBoxLayout:
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
+''')
+
+
+class AgeGS(RecycleView):
+  def __init__(self, **kwargs):
+    super(AgeGS, self).__init__(**kwargs)
+    self.data = [{'text': str(x)} for x in range(20)]
+
+class FloatInput(TextInput):
+
+    pat = re.compile('[^0-9]')
+    def insert_text(self, substring, from_undo=False):
+        pat = self.pat
+        if '.' in self.text:
+            s = re.sub(pat, '', substring)
+        else:
+            s = '.'.join([re.sub(pat, '', s) for s in substring.split('.', 1)])
+        return super(FloatInput, self).insert_text(s, from_undo=from_undo)
+
+class AgeGame(BoxLayout):
+    pass
+
+class AgeGuessingApp(App):
+
+def printHello():
+        print('User pressed enter in')
+
+#  def build(self):
+#    return Button(text='Hello',
+#    		  background_color=(0, 0, 1, 1),
+#		  font_size=150)
+#    layout = BoxLayout(orientation='vertical')
+#    heading = Label(text='Age Guessing', font_size = 200)
+#    s = Scatter()
+#    l = Label(text='Hello',
+#              font_size=150)
+#    layout.add_widget(s)
+#    s.add_widget(l)
+#    q1 = Label(text='How old is Boris Johnson?',pos=(100,350))
+#    textinput = TextInput(text='Hello world')
+#    layout.add_widget(heading)
+#    layout.add_widget(q1)
+#    layout.add_widget(textinput)
+
+
+  def build(self):
+    root_widget = Age Game()
+    return root_widget
+
+if __name__ == "__main__":
+  AgeGuessingApp().run()
